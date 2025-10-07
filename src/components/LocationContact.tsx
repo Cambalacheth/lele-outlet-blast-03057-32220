@@ -4,10 +4,10 @@ import { MapPin, Clock, MessageCircle } from "lucide-react";
 
 const LocationContact = () => {
   const partners = [
-    { name: "DIGI", color: "text-blue-600" },
-    { name: "O2", color: "text-blue-500" },
-    { name: "LEBARA", color: "text-green-600" },
-    { name: "RIA", color: "text-red-600" },
+    { name: "Digi", color: "text-blue-600" },
+    { name: "Simyo", color: "text-blue-500" },
+    { name: "Vodafone", color: "text-red-600" },
+    { name: "Masmovil", color: "text-green-600" },
   ];
 
   const handleWhatsAppClick = () => {
@@ -73,7 +73,7 @@ const LocationContact = () => {
             <Card className="shadow-soft">
               <CardContent className="pt-5 md:pt-6 pb-5 md:pb-6">
                 <h3 className="font-bold text-base md:text-lg mb-3 md:mb-4 text-center">
-                  Nuestros Partners
+                  Distribuidor autorizado:
                 </h3>
                 <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
                   {partners.map((partner, index) => (

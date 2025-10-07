@@ -4,6 +4,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, User } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -26,6 +34,7 @@ const registrationSchema = z.object({
 
 const RegistrationForm = () => {
   const { toast } = useToast();
+  const [showCommunityDialog, setShowCommunityDialog] = useState(false);
   const [formData, setFormData] = useState({
     nombre: "",
     whatsapp: "",
@@ -66,6 +75,9 @@ const RegistrationForm = () => {
         email: "",
         privacyAccepted: false,
       });
+
+      // Show community dialog
+      setShowCommunityDialog(true);
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast({
@@ -83,111 +95,148 @@ const RegistrationForm = () => {
     }
   };
 
+  const handleJoinCommunity = () => {
+    window.open("https://chat.whatsapp.com/EVxHQFEZcRxF5oFMZOBgQb?mode=wwt", "_blank");
+    setShowCommunityDialog(false);
+  };
+
   return (
-    <section id="registro" className="py-12 md:py-16 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-8 md:mb-10">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 text-foreground">
-              ¡Apúntate Ahora!
-            </h2>
-            <p className="text-base md:text-lg text-muted-foreground px-4">
-              Regístrate y sé el primero en conocer las ofertas exclusivas
-            </p>
+    <>
+      <section id="registro" className="py-12 md:py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <div className="text-center mb-8 md:mb-10">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 text-foreground">
+                ¡Apúntate Ahora!
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground px-4">
+                Regístrate y sé el primero en conocer las ofertas exclusivas
+              </p>
+            </div>
+
+            <Card className="shadow-strong border-2 border-primary/20">
+              <CardHeader className="gradient-hero text-center rounded-t-lg px-4 py-5 md:px-6 md:py-6">
+                <CardTitle className="text-xl md:text-2xl text-primary-foreground">
+                  Formulario de Registro
+                </CardTitle>
+                <CardDescription className="text-sm md:text-base text-primary-foreground/90">
+                  Completa tus datos para no perderte nada
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="pt-5 md:pt-6 px-4 md:px-6">
+                <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="nombre" className="flex items-center gap-2">
+                      <User size={16} className="text-primary" />
+                      Nombre Completo *
+                    </Label>
+                    <Input
+                      id="nombre"
+                      type="text"
+                      placeholder="Tu nombre completo"
+                      value={formData.nombre}
+                      onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
+                      required
+                      className="border-2 focus:border-primary"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="whatsapp" className="flex items-center gap-2">
+                      <Phone size={16} className="text-primary" />
+                      WhatsApp *
+                    </Label>
+                    <Input
+                      id="whatsapp"
+                      type="tel"
+                      placeholder="+34 600 000 000"
+                      value={formData.whatsapp}
+                      onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
+                      required
+                      className="border-2 focus:border-primary"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="flex items-center gap-2">
+                      <Mail size={16} className="text-primary" />
+                      Email *
+                    </Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="tu@email.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      required
+                      className="border-2 focus:border-primary"
+                    />
+                  </div>
+
+                  <div className="flex items-start space-x-2 p-4 bg-muted/50 rounded-lg">
+                    <Checkbox
+                      id="privacy"
+                      checked={formData.privacyAccepted}
+                      onCheckedChange={(checked) =>
+                        setFormData({ ...formData, privacyAccepted: checked as boolean })
+                      }
+                      className="mt-1"
+                    />
+                    <Label htmlFor="privacy" className="text-sm leading-relaxed cursor-pointer">
+                      Acepto la política de privacidad y el tratamiento de mis datos para recibir
+                      información sobre eventos y ofertas de Lele Center. *
+                    </Label>
+                  </div>
+
+                  <Button 
+                    type="submit" 
+                    variant="hero" 
+                    size="xl" 
+                    className="w-full text-sm sm:text-base md:text-lg py-3 md:py-4"
+                  >
+                    APUNTARME AL OUTLET
+                  </Button>
+
+                  <p className="text-xs text-center text-muted-foreground">
+                    * Campos obligatorios
+                  </p>
+                </form>
+              </CardContent>
+            </Card>
           </div>
-
-          <Card className="shadow-strong border-2 border-primary/20">
-            <CardHeader className="gradient-hero text-center rounded-t-lg px-4 py-5 md:px-6 md:py-6">
-              <CardTitle className="text-xl md:text-2xl text-primary-foreground">
-                Formulario de Registro
-              </CardTitle>
-              <CardDescription className="text-sm md:text-base text-primary-foreground/90">
-                Completa tus datos para no perderte nada
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="pt-5 md:pt-6 px-4 md:px-6">
-              <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="nombre" className="flex items-center gap-2">
-                    <User size={16} className="text-primary" />
-                    Nombre Completo *
-                  </Label>
-                  <Input
-                    id="nombre"
-                    type="text"
-                    placeholder="Tu nombre completo"
-                    value={formData.nombre}
-                    onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
-                    required
-                    className="border-2 focus:border-primary"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="whatsapp" className="flex items-center gap-2">
-                    <Phone size={16} className="text-primary" />
-                    WhatsApp *
-                  </Label>
-                  <Input
-                    id="whatsapp"
-                    type="tel"
-                    placeholder="+34 600 000 000"
-                    value={formData.whatsapp}
-                    onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                    required
-                    className="border-2 focus:border-primary"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="flex items-center gap-2">
-                    <Mail size={16} className="text-primary" />
-                    Email *
-                  </Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="tu@email.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                    className="border-2 focus:border-primary"
-                  />
-                </div>
-
-                <div className="flex items-start space-x-2 p-4 bg-muted/50 rounded-lg">
-                  <Checkbox
-                    id="privacy"
-                    checked={formData.privacyAccepted}
-                    onCheckedChange={(checked) =>
-                      setFormData({ ...formData, privacyAccepted: checked as boolean })
-                    }
-                    className="mt-1"
-                  />
-                  <Label htmlFor="privacy" className="text-sm leading-relaxed cursor-pointer">
-                    Acepto la política de privacidad y el tratamiento de mis datos para recibir
-                    información sobre eventos y ofertas de Lele Center. *
-                  </Label>
-                </div>
-
-                <Button 
-                  type="submit" 
-                  variant="hero" 
-                  size="xl" 
-                  className="w-full text-sm sm:text-base md:text-lg py-3 md:py-4"
-                >
-                  APUNTARME AL OUTLET
-                </Button>
-
-                <p className="text-xs text-center text-muted-foreground">
-                  * Campos obligatorios
-                </p>
-              </form>
-            </CardContent>
-          </Card>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Community Dialog */}
+      <Dialog open={showCommunityDialog} onOpenChange={setShowCommunityDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl text-center">¡Únete a la comunidad! 🎉</DialogTitle>
+            <DialogDescription className="text-center text-base pt-2">
+              Forma parte de nuestro grupo de WhatsApp y mantente al día con ofertas exclusivas y novedades
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="flex-col sm:flex-col gap-2 mt-4">
+            <Button 
+              variant="hero" 
+              size="lg"
+              className="w-full"
+              onClick={handleJoinCommunity}
+            >
+              Unirse a la comunidad
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="w-full"
+              onClick={() => setShowCommunityDialog(false)}
+            >
+              Ahora no
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 
