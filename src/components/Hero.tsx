@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, MapPin } from "lucide-react";
 import heroImage from "@/assets/outlet-hero.jpg";
-import logo from "@/assets/logo.png";
 
 interface HeroProps {
   onScrollToForm: () => void;
@@ -24,18 +23,8 @@ const Hero = ({ onScrollToForm }: HeroProps) => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-8 md:py-12 text-center">
-        {/* Logo/Brand */}
-        <div className="mb-6 md:mb-8 flex justify-center">
-          <img 
-            src={logo} 
-            alt="Lele Center Logo" 
-            className="w-48 h-auto md:w-64 lg:w-72 drop-shadow-2xl"
-          />
-        </div>
-
         {/* Main Title - Fondo blanco sólido para máxima legibilidad */}
         <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6 leading-tight px-2">
-          <span className="block text-foreground mb-2 md:mb-4 text-2xl sm:text-3xl md:text-5xl">¡GRAN</span>
           <div className="inline-block bg-white px-4 py-2 sm:px-6 sm:py-3 md:px-10 md:py-5 rounded-xl md:rounded-2xl shadow-strong">
             <span className="block text-primary text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
               OUTLET DAY
