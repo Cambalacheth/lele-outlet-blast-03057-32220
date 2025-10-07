@@ -9,6 +9,14 @@ import { Mail, Phone, User } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
 
+// Temporary type definition until Supabase types regenerate
+type OutletRegistration = {
+  nombre: string;
+  whatsapp: string;
+  email: string;
+  privacy_accepted: boolean;
+};
+
 const registrationSchema = z.object({
   nombre: z.string().trim().min(1, "El nombre es obligatorio").max(100, "El nombre es demasiado largo"),
   whatsapp: z.string().trim().min(1, "El WhatsApp es obligatorio").max(20, "El número es demasiado largo"),
@@ -32,15 +40,17 @@ const RegistrationForm = () => {
       // Validate form data
       const validatedData = registrationSchema.parse(formData);
       
-      // Save to database
-      const { error } = await supabase
+      // Save to database - Type assertion until Supabase types regenerate
+      const registrationData: OutletRegistration = {
+        nombre: validatedData.nombre,
+        whatsapp: validatedData.whatsapp,
+        email: validatedData.email,
+        privacy_accepted: validatedData.privacyAccepted,
+      };
+      
+      const { error } = await (supabase as any)
         .from('outlet_registrations')
-        .insert({
-          nombre: validatedData.nombre,
-          whatsapp: validatedData.whatsapp,
-          email: validatedData.email,
-          privacy_accepted: validatedData.privacyAccepted,
-        });
+        .insert(registrationData);
 
       if (error) throw error;
 
