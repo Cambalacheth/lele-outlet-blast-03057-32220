@@ -41,23 +41,23 @@ const TrustSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-muted/50">
+    <section className="py-12 md:py-16 bg-muted/50">
       <div className="container mx-auto px-4">
         {/* Why Choose Us */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 text-foreground">
             ¿Por qué elegir LeLe Center?
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16">
           {benefits.map((benefit, index) => (
             <Card key={index} className="text-center hover:shadow-soft transition-all">
-              <CardContent className="pt-6">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 mb-4">
-                  <benefit.icon className="text-primary" size={24} />
+              <CardContent className="pt-5 md:pt-6 pb-5 md:pb-6">
+                <div className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary/10 mb-3 md:mb-4">
+                  <benefit.icon className="text-primary" size={22} />
                 </div>
-                <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
+                <h3 className="text-base md:text-lg font-bold mb-2">{benefit.title}</h3>
                 <p className="text-muted-foreground text-sm">{benefit.description}</p>
               </CardContent>
             </Card>
@@ -65,19 +65,19 @@ const TrustSection = () => {
         </div>
 
         {/* Testimonials */}
-        <div className="text-center mb-8">
-          <h3 className="text-2xl md:text-3xl font-bold">
+        <div className="text-center mb-6 md:mb-8">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold px-4">
             Lo que dicen nuestros clientes
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <Card key={index} className="bg-card border-2 hover:border-primary transition-all">
-              <CardContent className="pt-6">
-                <div className="text-4xl text-primary mb-4">"</div>
-                <p className="text-foreground mb-4 italic">{testimonial.text}</p>
-                <p className="text-sm font-semibold text-primary">— {testimonial.author}</p>
+              <CardContent className="pt-5 md:pt-6 pb-5 md:pb-6">
+                <div className="text-3xl md:text-4xl text-primary mb-3 md:mb-4">"</div>
+                <p className="text-sm md:text-base text-foreground mb-3 md:mb-4 italic">{testimonial.text}</p>
+                <p className="text-xs md:text-sm font-semibold text-primary">— {testimonial.author}</p>
               </CardContent>
             </Card>
           ))}

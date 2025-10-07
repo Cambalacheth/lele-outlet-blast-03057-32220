@@ -74,29 +74,29 @@ const RegistrationForm = () => {
   };
 
   return (
-    <section id="registro" className="py-16 bg-background">
+    <section id="registro" className="py-12 md:py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
+          <div className="text-center mb-8 md:mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 text-foreground">
               ¡Apúntate Ahora!
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-base md:text-lg text-muted-foreground px-4">
               Regístrate y sé el primero en conocer las ofertas exclusivas
             </p>
           </div>
 
           <Card className="shadow-strong border-2 border-primary/20">
-            <CardHeader className="gradient-hero text-center rounded-t-lg">
-              <CardTitle className="text-2xl text-primary-foreground">
+            <CardHeader className="gradient-hero text-center rounded-t-lg px-4 py-5 md:px-6 md:py-6">
+              <CardTitle className="text-xl md:text-2xl text-primary-foreground">
                 Formulario de Registro
               </CardTitle>
-              <CardDescription className="text-primary-foreground/90">
+              <CardDescription className="text-sm md:text-base text-primary-foreground/90">
                 Completa tus datos para no perderte nada
               </CardDescription>
             </CardHeader>
-            <CardContent className="pt-6">
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <CardContent className="pt-5 md:pt-6 px-4 md:px-6">
+              <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="nombre" className="flex items-center gap-2">
                     <User size={16} className="text-primary" />
@@ -164,7 +164,7 @@ const RegistrationForm = () => {
                   type="submit" 
                   variant="hero" 
                   size="xl" 
-                  className="w-full"
+                  className="w-full text-sm sm:text-base md:text-lg py-3 md:py-4"
                 >
                   APUNTARME AL OUTLET
                 </Button>

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, MapPin } from "lucide-react";
 import heroImage from "@/assets/outlet-hero.jpg";
+import logo from "@/assets/logo.png";
 
 interface HeroProps {
   onScrollToForm: () => void;
@@ -22,44 +23,45 @@ const Hero = ({ onScrollToForm }: HeroProps) => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-12 text-center">
+      <div className="relative z-10 container mx-auto px-4 py-8 md:py-12 text-center">
         {/* Logo/Brand */}
-        <div className="mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-2">
-            LELE CENTER
-          </h2>
-          <div className="h-1 w-24 gradient-hero mx-auto rounded-full" />
+        <div className="mb-6 md:mb-8 flex justify-center">
+          <img 
+            src={logo} 
+            alt="Lele Center Logo" 
+            className="w-48 h-auto md:w-64 lg:w-72 drop-shadow-2xl"
+          />
         </div>
 
         {/* Main Title - Fondo blanco sólido para máxima legibilidad */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
-          <span className="block text-foreground mb-4">¡GRAN</span>
-          <div className="inline-block bg-white px-6 py-3 md:px-10 md:py-5 rounded-2xl shadow-strong">
-            <span className="block text-primary">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6 leading-tight px-2">
+          <span className="block text-foreground mb-2 md:mb-4 text-2xl sm:text-3xl md:text-5xl">¡GRAN</span>
+          <div className="inline-block bg-white px-4 py-2 sm:px-6 sm:py-3 md:px-10 md:py-5 rounded-xl md:rounded-2xl shadow-strong">
+            <span className="block text-primary text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
               OUTLET DAY
             </span>
           </div>
         </h1>
 
         {/* Dates - Super Prominent */}
-        <div className="mb-8 inline-block gradient-accent px-8 py-4 rounded-2xl shadow-strong transform hover:scale-105 transition-all">
-          <p className="text-white text-xl md:text-2xl font-semibold mb-1">
+        <div className="mb-6 md:mb-8 inline-block gradient-accent px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-4 rounded-xl md:rounded-2xl shadow-strong transform hover:scale-105 transition-all mx-2">
+          <p className="text-white text-base sm:text-lg md:text-xl lg:text-2xl font-semibold mb-1">
             📅 SÁBADO Y DOMINGO
           </p>
-          <p className="text-white text-3xl md:text-5xl font-black">
+          <p className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black">
             11 y 12 de OCTUBRE
           </p>
         </div>
 
         {/* Location and Hours */}
-        <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-10 text-base md:text-lg">
-          <div className="flex items-center gap-2 bg-card px-6 py-3 rounded-lg shadow-soft">
-            <MapPin className="text-primary" size={20} />
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mb-6 md:mb-10 text-sm sm:text-base md:text-lg px-4">
+          <div className="flex items-center gap-2 bg-card px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded-lg shadow-soft w-full sm:w-auto justify-center">
+            <MapPin className="text-primary flex-shrink-0" size={18} />
             <span className="font-semibold">Puerto de Sagunto, Valencia</span>
           </div>
-          <div className="flex items-center gap-2 bg-card px-6 py-3 rounded-lg shadow-soft">
-            <Clock className="text-primary" size={20} />
-            <span className="font-semibold">9:00-14:00 / 16:30-19:30</span>
+          <div className="flex items-center gap-2 bg-card px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded-lg shadow-soft w-full sm:w-auto justify-center">
+            <Clock className="text-primary flex-shrink-0" size={18} />
+            <span className="font-semibold text-center">9:00-14:00 / 16:30-19:30</span>
           </div>
         </div>
 
@@ -68,13 +70,13 @@ const Hero = ({ onScrollToForm }: HeroProps) => {
           variant="accent" 
           size="xl"
           onClick={onScrollToForm}
-          className="mb-6"
+          className="mb-4 md:mb-6 text-sm sm:text-base md:text-lg px-6 py-3 md:px-8 md:py-4 mx-4"
         >
           🎯 APÚNTATE Y ASEGURA TU OFERTA
         </Button>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
           Descuentos <span className="font-bold text-accent">exclusivos</span> en stock limitado.{" "}
           <span className="font-bold text-primary">¡Solo hasta agotar existencias!</span>
         </p>
