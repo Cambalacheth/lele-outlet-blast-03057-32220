@@ -34,11 +34,8 @@ const Hero = ({ onScrollToForm }: HeroProps) => {
 
         {/* Dates - Super Prominent */}
         <div className="mb-6 md:mb-8 inline-block gradient-accent px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-4 rounded-xl md:rounded-2xl shadow-strong transform hover:scale-105 transition-all mx-2">
-          <p className="text-white text-base sm:text-lg md:text-xl lg:text-2xl font-semibold mb-1">
-            📅 SÁBADO Y DOMINGO
-          </p>
           <p className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black">
-            11 y 12 de OCTUBRE
+            📅 ¡Sábados y Domingos!
           </p>
         </div>
 
