@@ -45,11 +45,19 @@ const Hero = ({ onScrollToForm }: HeroProps) => {
             <MapPin className="text-primary flex-shrink-0" size={18} />
             <span className="font-semibold">Puerto de Sagunto, Valencia</span>
           </div>
-          <div className="flex items-center gap-2 bg-card px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded-lg shadow-soft w-full sm:w-auto justify-center">
-            <Clock className="text-primary flex-shrink-0" size={18} />
-            <span className="font-semibold text-center text-xs sm:text-sm md:text-base">
-              Sáb: 9:00-14:00 / 16:30-19:30 | Dom: 9:00-14:00
-            </span>
+          <div className="bg-card px-4 py-3 sm:px-5 md:px-6 rounded-lg shadow-soft w-full sm:w-auto">
+            <div className="flex items-center gap-2 justify-center mb-2">
+              <Clock className="text-primary flex-shrink-0" size={18} />
+              <span className="font-bold">Horarios</span>
+            </div>
+            <div className="space-y-1 text-center text-xs sm:text-sm md:text-base">
+              <div className="font-semibold text-primary">
+                Sábados: <span className="text-foreground">9:00-14:00 / 16:30-19:30</span>
+              </div>
+              <div className="font-semibold text-primary">
+                Domingos: <span className="text-foreground">9:00-14:00</span>
+              </div>
+            </div>
           </div>
         </div>
 

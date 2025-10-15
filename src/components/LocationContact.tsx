@@ -48,12 +48,18 @@ const LocationContact = () => {
                   <div className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full gradient-hero flex-shrink-0">
                     <Clock className="text-primary-foreground" size={20} />
                   </div>
-                  <div>
-                    <h3 className="font-bold text-base md:text-lg mb-1">Horario Outlet Day</h3>
-                    <p className="text-sm md:text-base text-muted-foreground">
-                      Sábados: 9:00 - 14:00 / 16:30 - 19:30<br />
-                      Domingos: 9:00 - 14:00
-                    </p>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-base md:text-lg mb-2">Horario Outlet Day</h3>
+                    <div className="space-y-1.5 text-sm md:text-base">
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold text-primary min-w-[70px]">Sábados:</span>
+                        <span className="text-muted-foreground">9:00 - 14:00 / 16:30 - 19:30</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold text-primary min-w-[70px]">Domingos:</span>
+                        <span className="text-muted-foreground">9:00 - 14:00</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
