@@ -51,8 +51,8 @@ const LocationContact = () => {
                   <div>
                     <h3 className="font-bold text-base md:text-lg mb-1">Horario Outlet Day</h3>
                     <p className="text-sm md:text-base text-muted-foreground">
-                      Sábado y Domingo<br />
-                      9:00 - 14:00 / 16:30 - 19:30
+                      Sábados: 9:00 - 14:00 / 16:30 - 19:30<br />
+                      Domingos: 9:00 - 14:00
                     </p>
                   </div>
                 </div>
